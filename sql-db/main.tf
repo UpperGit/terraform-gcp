@@ -14,7 +14,6 @@ resource "google_sql_database_instance" "master" {
 
   settings {
     tier              = var.tier
-    activation_policy = "ON_DEMAND"
     disk_autoresize   = true
     disk_type         = "PD_SSD"
     pricing_plan      = "PER_USE"
@@ -85,7 +84,6 @@ resource "google_sql_database_instance" "failover" {
     crash_safe_replication = true
     
     tier              = var.tier
-    activation_policy = "ON_DEMAND"
     disk_autoresize   = true
     disk_type         = "PD_SSD"
     pricing_plan      = "PER_USE"
@@ -150,7 +148,6 @@ resource "google_sql_database_instance" "read" {
   settings {
     
     tier              = var.tier
-    activation_policy = "ON_DEMAND"
     disk_autoresize   = true
     disk_type         = "PD_SSD"
     pricing_plan      = "PER_USE"

@@ -72,3 +72,15 @@ variable "read_replica_count" {
   description = "Number of read replicas"
   default       = 0
 }
+
+variable "maintenance_window_day" {
+  description = "The day of week (1-7) for the master instance maintenance."
+  type        = number
+  default     = 1
+}
+
+variable "maintenance_window_hour" {
+  description = "The hour of day (0-23) maintenance window for the master instance maintenance."
+  type        = number
+  default     = 23
+}

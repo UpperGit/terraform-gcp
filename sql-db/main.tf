@@ -34,6 +34,8 @@ resource "google_sql_database_instance" "master" {
 
     maintenance_window {
       update_track = "stable"
+      day          = var.maintenance_window_day
+      hour         = var.maintenance_window_hour
     }
 
     user_labels = merge(
@@ -103,6 +105,8 @@ resource "google_sql_database_instance" "failover" {
 
     maintenance_window {
       update_track = "stable"
+      day          = var.maintenance_window_day
+      hour         = var.maintenance_window_hour
     }
 
     user_labels = merge(
@@ -166,6 +170,8 @@ resource "google_sql_database_instance" "read" {
 
     maintenance_window {
       update_track = "stable"
+      day          = var.maintenance_window_day
+      hour         = var.maintenance_window_hour
     }
 
     user_labels = merge(

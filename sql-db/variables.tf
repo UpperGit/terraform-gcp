@@ -64,11 +64,11 @@ variable "backup_enabled" {
 variable "failover_instance_count" {
   type        = number
   description = "Number of failover instances"
-  value       = 0
+  default       = 0
 }
 
 variable "read_replica_count" {
   type        = number
   description = "Number of read replicas"
-  value       = 0
+  default       = 0
 }

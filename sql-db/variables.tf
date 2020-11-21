@@ -8,6 +8,12 @@ variable "name" {
   description = "Unique network name, suggestion: use a slug like 'my_network'"
 }
 
+variable "region" {
+  type        = string
+  description = "Region where the db cluster is"
+  default     = "us-central1"
+}
+
 variable "private_network_id" {
   type        = string
   description = "VPC network ID to create private instance"

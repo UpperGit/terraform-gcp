@@ -8,11 +8,6 @@ variable "name" {
   description = "Unique network name, suggestion: use a slug like 'my_network'"
 }
 
-variable "project" {
-  type        = string
-  description = "Cloud provider owner project id"
-}
-
 variable "private_network_id" {
   type        = string
   description = "VPC network ID to create private instance"
@@ -55,13 +50,19 @@ variable "labels" {
 }
 
 variable "backup_enabled" {
-	type = bool
-	description = "Enables backup"
-	default = false
+  type        = bool
+  description = "Enables backup"
+  default     = false
 }
 
-variable "replica_count" {
-	type = number
-	description = "Number of read replicas"
-	value = 0
+variable "failover_instance_count" {
+  type        = number
+  description = "Number of failover instances"
+  value       = 0
+}
+
+variable "read_replica_count" {
+  type        = number
+  description = "Number of read replicas"
+  value       = 0
 }

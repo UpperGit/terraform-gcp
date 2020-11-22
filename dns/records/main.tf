@@ -1,7 +1,7 @@
 resource "google_dns_record_set" "frontend" {
   provider = google
 
-  for_each = { for subdomain, record in var.records : "${subdomain}-${record.type}" => merge(record, { subdomain = subdomain }) }
+  for_each = { for record in var.records : "${record.subdomain}-${record.type}" => record }
 
   name = "${each.value["subdomain"]}.${var.dns_zone}"
   type = each.value["type"]

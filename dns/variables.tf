@@ -5,7 +5,7 @@ variable "prefix" {
 
 variable "name" {
   type        = string
-  description = "Unique network name, suggestion: use a slug like 'my_network'"
+  description = "Unique zone name, suggestion: use a slug like 'my_dns_zone'"
 }
 
 variable "dns_zone" {

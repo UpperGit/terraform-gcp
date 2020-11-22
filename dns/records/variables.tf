@@ -5,7 +5,7 @@ variable "prefix" {
 
 variable "name" {
   type        = string
-  description = "Unique network name, suggestion: use a slug like 'my_network'"
+  description = "Unique zone name, suggestion: use a slug like 'my_dns_zone'"
 }
 
 variable "dns_zone" {
@@ -15,12 +15,13 @@ variable "dns_zone" {
 }
 
 variable "records" {
-  type        = map
+  type        = list
   description = "Map of subdomains => record_set metadata"
-  default = {
+  default = [
 
-    "sample-endpoint" = {
-      
+    {
+
+      subdomain = "sample-endpoint"
       type = "A"
       ttl  = 60
       record_set = [
@@ -29,5 +30,5 @@ variable "records" {
 
     }
     
-  }
+  ]
 }

@@ -1,5 +1,5 @@
-output "client_cert" {
-  description = "A root client certificate"
-  value       = google_sql_ssl_cert.client_cert
-  sensitive   = true
+output "database_instance_name" {
+  description = "Database master instance name"
+  value       = google_sql_database_instance.master.name
+  sensitive   = false
 }

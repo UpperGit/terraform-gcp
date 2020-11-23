@@ -3,7 +3,7 @@ resource "google_dns_record_set" "frontend" {
 
   for_each = { for record in var.records : "${record.subdomain}-${record.type}" => record }
 
-  name = "${each.value["subdomain"]}.${var.dns_zone}"
+  name = "${each.value["subdomain"]}.${var.dns_zone}."
   type = each.value["type"]
   ttl  = each.value["ttl"]
 

@@ -8,7 +8,7 @@ resource "google_sql_ssl_cert" "certificate" {
   provider = google
 
   common_name = var.common_name
-  instance    = var.dabatase_instance_name
+  instance    = var.database_instance_name
 }
 
 ############################
@@ -29,7 +29,7 @@ resource "google_sql_user" "client_password" {
 
   provider = google
 
-  instance    = var.dabatase_instance_name
+  instance    = var.database_instance_name
   name = var.username
   password    = random_password.password.result
 }

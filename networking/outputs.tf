@@ -8,3 +8,9 @@ output "private_network_id" {
   description = "VPC ID"
   value       = google_compute_network.private_network.id
 }
+
+output "access_connectors" {
+  #https://cloud.google.com/functions/docs/networking/connecting-vpc#create-connector
+  description = "Serverles access connector configuration mapped by region"
+  value       = var.access_connectors
+}

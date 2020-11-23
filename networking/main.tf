@@ -35,7 +35,7 @@ resource "google_compute_subnetwork" "subnets" {
   ip_cidr_range = each.value["cidr"]
   region        = each.value["region"]
 
-  private_ip_google_access   = true
+  private_ip_google_access = true
 
 }
 
@@ -79,4 +79,25 @@ resource "google_service_networking_connection" "private_vpc_connection" {
   reserved_peering_ranges = [
     google_compute_global_address.private_ip_address[each.key].name,
   ]
+}
+
+
+############################
+# VPC access connector
+############################
+
+resource "google_vpc_access_connector" "connector" {
+
+  provider = google
+
+  for_each = var.access_connectors
+
+  name          = "${var.prefix}-${var.name}-${each.key}"
+  region        = each.key
+  ip_cidr_range = each.value["cidr"]
+  network       = google_compute_network.private_network.name
+
+  min_throughput = lookup(each.value, "min_throughput", 200)
+  max_throughput = lookup(each.value, "max_throughput", 300)
+
 }

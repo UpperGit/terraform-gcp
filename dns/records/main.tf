@@ -1,4 +1,4 @@
-resource "google_dns_record_set" "frontend" {
+resource "google_dns_record_set" "record_set" {
   provider = google
 
   for_each = { for record in var.records : "${record.subdomain}-${record.type}" => record }

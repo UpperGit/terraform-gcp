@@ -91,7 +91,7 @@ resource "google_vpc_access_connector" "access_connectors" {
 
   for_each = var.access_connectors
   
-  name          = substr(md5("${var.prefix}-${var.name}-${each.key}"), 0, 23)
+  name          = format("%s-%s", "conn", substr(md5("${var.prefix}-${var.name}-${each.key}"), 0, 20))
   region        = each.key
   ip_cidr_range = each.value["cidr"]
   network       = google_compute_network.private_network.name
@@ -100,3 +100,6 @@ resource "google_vpc_access_connector" "access_connectors" {
   max_throughput = lookup(each.value, "max_throughput", 300)
 
 }
+
+
+55588931b15089b9216ce31

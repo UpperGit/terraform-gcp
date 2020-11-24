@@ -81,18 +81,17 @@ resource "google_service_networking_connection" "private_vpc_connection" {
   ]
 }
 
-
 ############################
 # VPC access connector
 ############################
 
-resource "google_vpc_access_connector" "connector" {
+resource "google_vpc_access_connector" "access_connectors" {
 
   provider = google
 
   for_each = var.access_connectors
-
-  name          = "${var.prefix}-${var.name}-${each.key}"
+  
+  name          = substr(md5("${var.prefix}-${var.name}-${each.key}"), 0, 23)
   region        = each.key
   ip_cidr_range = each.value["cidr"]
   network       = google_compute_network.private_network.name

@@ -100,6 +100,3 @@ resource "google_vpc_access_connector" "access_connectors" {
   max_throughput = lookup(each.value, "max_throughput", 300)
 
 }
-
-
-55588931b15089b9216ce31
